@@ -36,9 +36,13 @@ pub fn greeting(name: &str) -> String {
     format!("Hello, {}", name)
 }
 
-fn prints_and_returns_10(a: i32) -> i32 {
+pub fn prints_and_returns_10(a: i32) -> i32 {
     println!("I got the value {}", a);
     10
+}
+
+fn internal_adder(a: i32, b: i32) -> i32 {
+    a + b
 }
 
 #[cfg(test)]
@@ -96,5 +100,10 @@ mod tests {
     fn this_test_will_pass() {
         let value = prints_and_returns_10(4);
         assert_eq!(10, value);
+    }
+
+    #[test]
+    fn internal() {
+        assert_eq!(4, internal_adder(2, 2));
     }
 }
